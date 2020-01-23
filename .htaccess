@@ -1,0 +1,20 @@
+# <IfModule mod_rewrite.c>
+# RewriteEngine On
+# RewriteCond %{REQUEST_FILENAME} !-f
+# RewriteCond %{REQUEST_FILENAME} !-d
+# RewriteRule ^(.*)$ index.php/$1 [L]
+# </IfModule>
+
+Options +FollowSymLinks
+RewriteEngine on
+
+
+# -- Add this rule ---
+RewriteCond %{REQUEST_URI} ^/([a-zA-Z0-9_-]+)$
+RewriteRule ^(.*)$ index.php/profiles/view/$1 [L]
+# End of rule 
+
+# Standard CodeIgniter rule
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php/$1 [L]
